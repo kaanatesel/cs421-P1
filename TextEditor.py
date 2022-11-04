@@ -32,10 +32,6 @@ class Client:
     def user_password(self, pass_user):
         self.password = pass_user
 
-    def kolayGir(self):
-        self.name = USERNAME
-        self.password = PASS
-
     def connect(self):
         name = f'USER {self.name}'
         password = f'PASS {self.password}'
@@ -129,7 +125,6 @@ while True:
           3. WRITE\n\
           4. APPEND\n\
           5. UPDATE\n\
-        55. kolay gir\n\
           6. EXIT")
 
     protocol = int(input())
@@ -153,8 +148,6 @@ while True:
         cl1.append(app_msg)
     elif protocol == 5:
         cl1.update()
-    elif protocol == 55:
-        cl1.kolayGir()
     elif protocol == 6:
         print("Exiting...")
         cl1.exit()
