@@ -41,7 +41,8 @@ class Client:
         self.exit()
 
     def update(self):
-        cmd = f'UPDT {self.version}\r\n'
+        self.connect()
+        cmd = f'UPDT {self.version}'
         self.s.send(bytes(cmd + NEWLINE, ENCODING))
         data = self.s.recv(1024).decode()
         status, version, txt = self.receive_update_response(data)
@@ -55,14 +56,12 @@ class Client:
             print(f"File is updated to version {self.version}. For {self.name}")
         self.exit()
     def append(self, msg):
-        self.connect()
         self.update()
-        cmd = f'APND {self.version} {msg}\r\n'
+        cmd = f'APND {self.version} {msg}'
         self.s.send(bytes(cmd + NEWLINE, ENCODING))
         res = self.s.recv(1024).decode()
         resEdited = self.receive_response(res)
         print(resEdited)
-        self.exit()
 
     def write(self,line, msg):
         self.update()
@@ -70,8 +69,6 @@ class Client:
         self.s.send(bytes(cmd + NEWLINE, ENCODING))
         res = self.s.recv(1024).decode()
         resEdited = self.receive_response(res)
-        print(res)
-        print(resEdited)
 
     def exit(self):
         cmd = f'EXIT \r\n'
