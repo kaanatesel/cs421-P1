@@ -81,10 +81,10 @@ class Client:
 
 
 cl1 = Client('kaan')
-cl1.append('got')
-cl1.append('am')
-cl1.append('pipi')
-cl1.write('0', 'AMCIII KAAN')
+cl1.append('irem')
+cl1.append('ekin')
+cl1.append('atei')
+cl1.write('0', 'KAAN KAAN KAAN')
 time.sleep(2)
 cl1.update()
 cl1.exit()
